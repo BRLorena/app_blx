@@ -1,6 +1,39 @@
 Modelagem da Base de dados (Camada de modelos)
 Pydantic Model - https://pydantic-docs.helpmanual.io/usage/models/ 
 path: /models/models.py
+
+Classes:
 - Pessoa
 - Peoduto
 - Pedido
+_________________________________________________________________________
+Estrtutura do Projeto:
+* src/infra/sqlalchemy
+  - config (configuração com o db)  -> database.py
+  - models (representação das tabelas) -> models.py
+  - repositorios (acessa o banco de dados) -> produto.py
+* src/router
+* src/schema (utilizado P/ request e response) -> schemas.py
+* src/services
+* src/utils
+* src/services.py
+* src/banco_blx.db
+
+1. Separar preocupações
+2. Camadas principais: Controller -> Lógica -> Persistencia de dados
+3. Beneficios: 
+  a. Facilidade de evolução
+  b. Trabalho em equipe
+  c. Redução de efeitos Colaterais
+  d. Projeto grande
+_____________________________________________________________________________
+Design Framework:
+App --> Request --> Schema --> Route/Controller --> Serviços(Lógica) --> 
+Repositorio(Acesso aos dados) --> modelos --> DB
+++img
+________________________________________________________________________________
+
+ORM: Manipula a informação P/ o banco de dados
+sqlalchemy - https://www.sqlalchemy.org/ 
+
+

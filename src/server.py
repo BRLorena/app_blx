@@ -19,19 +19,6 @@ app.add_middleware(
 )
 
 
-
-
-
-class Pedido(BaseModel):
-  produto: Produto
-  pessoa: Pessoa
-  qtd: int
-  local: str
-  obs: str
-
-#database 
-db: List[Pessoa] = []
-
 #common
 @app.get("/animais")
 async def list_animals():
