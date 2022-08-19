@@ -1,0 +1,6 @@
+Modelagem da Base de dados (Camada de modelos)
+Pydantic Model - https://pydantic-docs.helpmanual.io/usage/models/ 
+path: /models/models.py
+- Pessoa
+- Peoduto
+- Pedido
