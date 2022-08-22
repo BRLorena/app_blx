@@ -14,9 +14,12 @@ Estrtutura do Projeto:
   - repositorios (acessa o banco de dados) -> produto.py
 * src/router
 * src/schema (utilizado P/ request e response) -> schemas.py
+  - Dentro da class produto criei outra class que a partir de um model criará um schema
 * src/services
 * src/utils
-* src/services.py
+* src/server.py -> onde ficará a app (Route/Controller)
+  import as classes necessárias (Repositorios/produto.py , schemas/schemas.py e sqlalchemy/config/database.py)
+  import Depends do FastAPI que ele me ajuda a buscar o method  get_db()
 * src/banco_blx.db
 
 1. Separar preocupações
@@ -35,5 +38,8 @@ ________________________________________________________________________________
 
 ORM: Manipula a informação P/ o banco de dados
 sqlalchemy - https://www.sqlalchemy.org/ 
+pip install SQLAlchemy==1.4.7 -> install ORM
 
-
+____________________________________________________________________________________
+Atualizado as rotas dos diretorios P/ importar as classes.
+A partir de agora desenv. a partir do dir do projeto.. (app_blx)
