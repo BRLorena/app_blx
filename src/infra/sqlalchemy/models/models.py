@@ -2,7 +2,7 @@ from sqlalchemy import Boolean, Column, Float, Integer, String
 from infra.sqlalchemy.config.database import Base
 
 
-# modelo do nosso ORM
+# modelo do nosso ORM -> representa a estrutura da db
 class Produto(Base):
 
     __tablename__ = "produto"

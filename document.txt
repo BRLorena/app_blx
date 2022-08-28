@@ -43,3 +43,16 @@ pip install SQLAlchemy==1.4.7 -> install ORM
 ____________________________________________________________________________________
 Atualizado as rotas dos diretorios P/ importar as classes.
 A partir de agora desenv. a partir do dir do projeto.. (app_blx)
+
+-------------------------------------------------------------------------------
+step by step 
+1. Criar um schema (class e atributos) utilizado para criar a estrutura da API
+2. Criar o models (class e atributos) estrutura do bd
+3. Criar repositorios (cada class tem um repositorio) responsavel por comunicar com a db
+3. Criar rota no server.
+  ex: 
+  @app.get("/usuarios", status_code=200) -> criar metodo c/ anotação @app.METHOD
+  def listar_usuarios(db: Session = Depends(get_db)): -> requires (instancia da db)
+    usuarios = RepositorioUsuario(db).listar() -> Repositorio, reponsavel por executar as querys 
+    return usuarios -> retorna o obj.
+--------------------------------------------------------------------------------------------------

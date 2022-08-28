@@ -2,8 +2,9 @@ from uuid import uuid4
 
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware  # permitir front usar API
-from schemas.schemas import Produto  # import class Produto from schemas
+from schemas.schemas import Produto, Usuario  # import class Produto from schemas
 from infra.sqlalchemy.repositorios.produto import RepositorioProduto
+from infra.sqlalchemy.repositorios.usuario import RepositorioUsuario
 from sqlalchemy.orm import Session
 from infra.sqlalchemy.config.database import get_db, criar_bd
 
@@ -25,7 +26,7 @@ app = FastAPI()
 #     allow_headers=["*"],
 # )
 
-
+## ______________________________ Produtos __________________________________________________________
 @app.post("/produtos")  # Constructor RepositorioProduto precisa de um db
 def criar_produtos(produto: Produto, db: Session = Depends(get_db)):
     produto_criado = RepositorioProduto(db).criar(produto)
@@ -33,10 +34,23 @@ def criar_produtos(produto: Produto, db: Session = Depends(get_db)):
 
 
 ## common
-@app.get("/produtos")
+@app.get("/produtos", status_code=200)
 def listar_produtos(db: Session = Depends(get_db)):
     produtos = RepositorioProduto(db).listar()
     return produtos
+
+
+## ____________________________________Usuario__________________________________________________________________
+@app.post("/usuarios", status_code=200)
+def criar_usuarios(usuario: Usuario, db: Session = Depends(get_db)):
+    usuario_criado = RepositorioUsuario(db).criar(usuario)
+    return usuario_criado
+
+
+@app.get("/usuarios", status_code=200)
+def listar_usuarios(db: Session = Depends(get_db)):
+    usuarios = RepositorioUsuario(db).listar()
+    return usuarios
 
 
 # @app.get("/animal/{id_animal}")
